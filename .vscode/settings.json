@@ -1,0 +1,24 @@
+{
+  "editor.formatOnSave": true,
+  "[typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "cSpell.words": [
+    "stylelint",
+    "reduxjs",
+    "pokemons",
+    "signin",
+    "homeworld",
+    "starships",
+    "signup",
+    "Toastify",
+    "SWAPI",
+    "firestore",
+    "svgr",
+    "favs",
+    "sugg",
+    "testid"
+  ]
+}

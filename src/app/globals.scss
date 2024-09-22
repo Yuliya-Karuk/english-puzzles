@@ -1,0 +1,97 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --primary-bright: #c7625d;
+    --invalid: #e8725e;
+    --valid: #90f219;
+    --black: #000;
+    --font-dark: #594046;
+    --background-black-transparent: rgb(0 0 0 / 5%);
+    --shadow-dark: rgb(0 0 0 / 40%);
+    --primary-light: #d5acb4;
+    --white: #ffffff;
+
+    --radius: 8px;
+  }
+
+  [data-theme='dark'] {
+    --background: #0e0f11;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../assets/fonts/roboto-regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../assets/fonts/roboto-bold.woff2') format('woff2');
+  }
+
+  html {
+    @apply h-full;
+    font-size: 10px;
+  }
+
+  body {
+    @apply relative h-full flex flex-col bg-center bg-no-repeat bg-cover;
+    background-image: url('../assets/body-bg.jpg');
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+@layer base {
+  ul,
+  ol {
+    @apply m-0 p-0 list-none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    @apply m-0 p-0;
+  }
+
+  button {
+    @apply cursor-pointer p-0 bg-transparent border-none;
+  }
+
+  a {
+    @apply cursor-pointer block text-inherit no-underline;
+  }
+
+  input {
+    @apply outline-none;
+  }
+
+  fieldset {
+    @apply m-0 p-0 border-none;
+  }
+}
+
+@layer components {
+  .blur-bg {
+    @apply bg-background-black-transparent backdrop-blur-[12.5px];
+  }
+
+  .container {
+    @apply max-w-[1400px] mx-auto;
+  }
+
+  .btn-custom {
+    @apply text-[2rem] font-bold leading-[normal] tracking-normal text-white bg-primary-bright rounded-2xl px-20 py-10 capitalize;
+  }
+}

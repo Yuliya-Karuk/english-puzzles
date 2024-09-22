@@ -18,9 +18,13 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "next": "14.2.13",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "sass": "^1.79.3",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^22",
@@ -29,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "autoprefixer": "^10.4.20",
+    "classnames": "^2.5.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",

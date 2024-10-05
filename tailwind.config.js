@@ -9,6 +9,11 @@ module.exports = {
         'background-black-transparent': 'var(--background-black-transparent)',
         white: 'var(--white)',
         'primary-bright': 'var(--primary-bright)',
+        orange: 'var(--orange)',
+        invalid: 'var(--invalid)',
+        'shadow-dark': 'var(--shadow-dark)',
+        input: 'var(--input)',
+        'border-input': 'var(--border-input)',
       },
       spacing: {
         8: '8px',

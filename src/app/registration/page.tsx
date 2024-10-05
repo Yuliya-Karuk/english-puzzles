@@ -1,20 +1,20 @@
 'use client';
 
-import { useControlledForm } from '@/shared/hooks/useControlledForm';
+import { useRegistrationForm } from '@/shared/hooks/useRegistrationForm';
 import { GenderFieldset } from '@/shared/ui/GenderFieldset/GenderFieldset';
 import { MemoizedPasswordInput } from '@/shared/ui/PasswordInput/PasswordInput';
 import { MemoizedTextInput } from '@/shared/ui/TextInput/TextInput';
 import Link from 'next/link';
 
 export default function Registration() {
-  const { register, handleSubmit, errors, isValid, onSubmit } = useControlledForm();
+  const { register, handleSubmit, errors, isValid, onSubmit } = useRegistrationForm();
 
   return (
     <main className="flex flex-1 gap-[30px] justify-center p-20">
-      <div className="flex justify-center gap-[20px] lg:gap-[50px] max-w-[640px] min-w-[380px]">
+      <div className="flex justify-center gap-[20px] lg:gap-[50px] clamp-width">
         <div className="flex flex-col justify-start gap-[10px] p-20 blur-bg rounded-[16px] w-full">
-          <h1 className="w-full text-center text-5xl font-bold">Registration</h1>
-          <p className="text-[1.4rem] flex gap-[10px] text-center self-center">
+          <h1 className="w-full text-center text-5xl font-bold text-font-dark">Registration</h1>
+          <p className="text-[1.4rem] flex gap-[10px] text-center self-center text-font-dark">
             Already have an account?
             <Link className="text-[1.4rem] text-primary-bright underline hover:no-underline" href="/login">
               Sign In
@@ -40,6 +40,7 @@ export default function Registration() {
             />
 
             <MemoizedPasswordInput
+              withStrength
               name="password"
               label="Password"
               register={register}

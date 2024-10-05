@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { Gender } from '../models/types';
 
-export interface CustomForm {
+export interface RegistrationForm {
   name: string;
   age: number;
   email: string;
@@ -10,6 +10,8 @@ export interface CustomForm {
   acceptTerms: boolean;
   gender: string;
 }
+
+export type LoginForm = Pick<RegistrationForm, 'email' | 'password'>;
 
 export const genders: Gender[] = ['Male', 'Female'];
 
@@ -21,7 +23,7 @@ const englishLettersRegExp = /^[A-Za-z]+$/;
 
 export const passwordMinLength = 8;
 
-export const schema = yup.object().shape({
+export const registrationSchema = yup.object().shape({
   name: yup
     .string()
     .matches(englishLettersRegExp, 'Only English letters are allowed')
@@ -60,4 +62,17 @@ export const schema = yup.object().shape({
     .boolean()
     .oneOf([true], 'You must accept the terms and conditions')
     .required('You must accept the terms and conditions'),
+});
+
+export const loginSchema = yup.object().shape({
+  email: yup.string().required('Email is a required field').matches(validEmailRegExp, 'Must be a valid email format'),
+
+  password: yup
+    .string()
+    .required('Password is a required field')
+    .min(passwordMinLength, `Password must be at least ${passwordMinLength} characters long`)
+    .matches(
+      passwordStrengthRegex,
+      'Password must contain 1 number, 1 uppercase letter, 1 lowercase letter, and 1 special character'
+    ),
 });

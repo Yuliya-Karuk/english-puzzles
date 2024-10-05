@@ -81,7 +81,7 @@
   }
 
   button {
-    @apply cursor-pointer p-0 bg-transparent border-none;
+    @apply cursor-pointer p-0 bg-transparent border-none transition-all duration-300 ease-in-out;
   }
 
   a {
@@ -98,6 +98,10 @@
 }
 
 @layer components {
+  .clamp-width {
+    width: clamp(280px, 40vw, 600px);
+  }
+
   .page-container {
     @apply bg-center bg-no-repeat bg-cover min-h-[100vh];
     background-image: url('../assets/body-bg.jpg');
@@ -123,7 +127,6 @@
     @apply cursor-pointer;
 
     &::before {
-      // @extend %transition;
       content: '';
       position: absolute;
       top: 12px;
@@ -154,12 +157,10 @@
 
   .custom-radio {
     @apply relative block cursor-pointer w-20 h-20 shrink-0;
-    // @extend %transition;
     border-radius: 50%;
     border: 2px solid var(--font-dark);
 
     &::after {
-      // @extend %transition;
       content: '';
       width: 8px;
       height: 8px;

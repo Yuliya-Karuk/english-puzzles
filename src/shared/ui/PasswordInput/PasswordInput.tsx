@@ -4,10 +4,12 @@ import { TextInputProps } from '../../models/types';
 import { calculateStrength } from '../../utils/utils';
 import { MemoizedTextInput } from '../TextInput/TextInput';
 
-type PasswordInputProps<T extends FieldValues> = TextInputProps<T>;
+type PasswordInputProps<T extends FieldValues> = TextInputProps<T> & {
+  withStrength: boolean;
+};
 
 export function PasswordInput<T extends FieldValues>(props: PasswordInputProps<T>) {
-  const { name, label, type = 'text', register, error, autocomplete } = props;
+  const { name, label, type = 'text', register, error, autocomplete, withStrength } = props;
 
   const [strength, setStrength] = useState<number>(0);
 
@@ -27,14 +29,16 @@ export function PasswordInput<T extends FieldValues>(props: PasswordInputProps<T
         register={register}
         autocomplete={autocomplete}
       />
-      <div className="flex w-[50%] gap-[5px] my-[20px] mb-[10px]">
-        {[0, 1, 2, 3, 4].map(index => (
-          <div
-            key={index}
-            className={`w-[100px] h-[5px] transition-colors duration-300 rounded-[5px] ${index < strength ? 'bg-primary-bright' : 'bg-gray-400'}`}
-          />
-        ))}
-      </div>
+      {withStrength && (
+        <div className="flex w-[50%] gap-[5px] my-[20px] mb-[10px]">
+          {[0, 1, 2, 3, 4].map(index => (
+            <div
+              key={index}
+              className={`w-[100px] h-[5px] transition-colors duration-300 rounded-[5px] ${index < strength ? 'bg-primary-bright' : 'bg-gray-400'}`}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 }

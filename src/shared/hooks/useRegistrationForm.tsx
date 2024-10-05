@@ -1,16 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { CustomForm, schema } from '../utils/validationSchema';
+import { RegistrationForm, registrationSchema } from '../utils/validationSchema';
 
-export const useControlledForm = () => {
+export const useRegistrationForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
     reset,
-  } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
+  } = useForm({ resolver: yupResolver(registrationSchema), mode: 'onChange' });
 
-  const onSubmit = async (data: CustomForm) => {
+  const onSubmit = async (data: RegistrationForm) => {
     console.log(data);
     reset();
   };

@@ -1,6 +1,9 @@
+import { AuthProvider } from '@/shared/contexts';
 import Footer from '@/widgets/Footer/footer';
 import Header from '@/widgets/Header/header';
 import type { Metadata } from 'next';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './globals.scss';
 
 export const metadata: Metadata = {
@@ -17,9 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="flex flex-col page-container">
-          <Header />
-          {children}
-          <Footer />
+          <AuthProvider>
+            <Header />
+            {children}
+            <ToastContainer position="top-center" autoClose={2000} />
+            <Footer />
+          </AuthProvider>
         </div>
       </body>
     </html>

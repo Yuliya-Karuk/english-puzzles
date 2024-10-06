@@ -46,7 +46,7 @@ jobs:
       - name: Run Vitest tests
         run: npm run test
       - name: Generate coverage report
-        run: npm run test:coverage
+        run: npm run coverage
 
   build:
     runs-on: ubuntu-latest

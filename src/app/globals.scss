@@ -1,0 +1,187 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --primary-bright: #c7625d;
+    --invalid: #e8725e;
+    --valid: #90f219;
+    --black: #000;
+    --font-dark: #594046;
+    --background-black-transparent: rgb(0 0 0 / 5%);
+    --shadow-dark: rgb(0 0 0 / 40%);
+    --primary-light: #d5acb4;
+    --white: #ffffff;
+    --orange: #f6a100;
+    --radius: 8px;
+    --input: #ff91a4;
+    --border-input: #b7b7b7;
+  }
+
+  [data-theme='dark'] {
+    --background: #0e0f11;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../assets/fonts/roboto-regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../assets/fonts/roboto-bold.woff2') format('woff2');
+  }
+
+  html {
+    @apply h-full;
+    font-size: 10px;
+  }
+
+  body {
+    @apply relative h-full;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    @apply appearance-none m-0;
+  }
+
+  .visually-hidden {
+    @apply absolute overflow-hidden w-[1px] h-[1px] m-[-1px] p-0 border-0;
+    clip: rect(0 0 0 0);
+  }
+
+  input[type='checkbox'] {
+    @apply visually-hidden;
+  }
+}
+
+@layer base {
+  ul,
+  ol {
+    @apply m-0 p-0 list-none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    @apply m-0 p-0;
+  }
+
+  button {
+    @apply cursor-pointer p-0 bg-transparent border-none transition-all duration-300 ease-in-out;
+  }
+
+  a {
+    @apply cursor-pointer block text-inherit no-underline transition-all duration-300 ease-in-out;
+  }
+
+  input {
+    @apply outline-none;
+  }
+
+  fieldset {
+    @apply m-0 p-0 border-none;
+  }
+}
+
+@layer components {
+  .clamp-width {
+    width: clamp(280px, 40vw, 600px);
+  }
+
+  .page-container {
+    @apply bg-center bg-no-repeat bg-cover min-h-[100vh];
+    background-image: url('../assets/body-bg.jpg');
+  }
+
+  .blur-bg {
+    @apply bg-background-black-transparent backdrop-blur-[12.5px];
+  }
+
+  .container {
+    @apply max-w-[1400px] mx-auto;
+  }
+
+  .btn-custom {
+    @apply text-[2rem] font-bold leading-[normal] tracking-normal text-white bg-primary-bright rounded-2xl px-20 py-10 capitalize;
+  }
+
+  .custom-label {
+    @apply text-left text-[2rem] font-normal leading-[1] tracking-[0.05rem] text-font-dark;
+  }
+
+  .custom-checkbox {
+    @apply cursor-pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 5px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--font-dark);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 5px;
+      display: none;
+      width: 15px;
+      height: 15px;
+      background-image: url('../assets/icons/checked.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      transition: opacity 0.3s;
+    }
+
+    input[type='checkbox']:checked + &::after {
+      display: block;
+    }
+  }
+
+  .custom-radio {
+    @apply relative block cursor-pointer w-20 h-20 shrink-0;
+    border-radius: 50%;
+    border: 2px solid var(--font-dark);
+
+    &::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  input[type='radio']:checked + .custom-radio {
+    border-color: var(--orange);
+  }
+
+  input[type='radio']:checked + .custom-radio::after {
+    background: var(--orange);
+  }
+
+  .form-error {
+    @apply h-[2rem] text-[1.2rem] font-normal leading-[1.5] tracking-[0.05rem] text-invalid;
+  }
+}

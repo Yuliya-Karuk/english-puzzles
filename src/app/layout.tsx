@@ -1,17 +1,10 @@
+import { AuthProvider } from '@/shared/contexts';
+import Footer from '@/widgets/Footer/footer';
+import Header from '@/widgets/Header/header';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import './globals.css';
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './globals.scss';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,7 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body>
+        <div className="flex flex-col page-container">
+          <AuthProvider>
+            <Header />
+            {children}
+            <ToastContainer position="top-center" autoClose={2000} />
+            <Footer />
+          </AuthProvider>
+        </div>
+      </body>
     </html>
   );
 }

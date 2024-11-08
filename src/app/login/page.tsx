@@ -33,12 +33,18 @@ export default function Login() {
             <button
               type="button"
               onClick={onGoogleSubmit}
-              className="w-full p-[10px] flex items-center justify-center rounded-lg my-[10px] bg-[#e5b7b3] hover:bg-primary-bright"
+              className="w-full p-[10px] text-font-dark flex items-center justify-center rounded-lg my-[10px] bg-[#e5b7b3] hover:text-white hover:bg-primary-bright"
             >
               <div className="flex items-center">
-                <Image src={googleIcon} alt="Google" width={20} height={20} />
+                <Image
+                  src={googleIcon}
+                  alt="Google"
+                  width={20}
+                  height={20}
+                  className="drop-shadow-[1px_1px_5px_rgba(255,255,255,0.6)]"
+                />
               </div>
-              <span className="ml-2 text-[1.6rem] font-semibold text-font-dark">Continue with Google</span>
+              <span className="ml-2 text-[1.6rem] font-semibold text-inherit">Continue with Google</span>
             </button>
             <form className="relative flex flex-col justify-start gap-[5px]" onSubmit={handleSubmit(onSubmit)}>
               <MemoizedTextInput
